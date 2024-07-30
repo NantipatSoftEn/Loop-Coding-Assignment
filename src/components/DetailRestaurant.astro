@@ -1,36 +1,27 @@
----
-import Layout from "@/layouts/templateRestaurants.astro";
----
 
 <style>
-  .header-image {
-    width: 100%;
-    height: auto;
-  }
-  .map-image {
-    width: 100%;
-    height: auto;
-  }
-  .details-section {
-    margin-top: 20px;
-  }
-  .details-section h5 {
-    font-weight: bold;
-  }
-  .contact-info li {
-    list-style: none;
-  }
-  .note-section {
-    font-weight: bold;
-  }
-</style>
-<Layout
-  title="About Me"
-  description="Lorem ipsum dolor sit amet"
-  pubDate={new Date("August 08 2021")}
-  heroImage="/blog-placeholder-about.jpg"
->
-  <div class="container">
+    .header-image {
+      width: 100%;
+      height: auto;
+    }
+    .map-image {
+      width: 100%;
+      height: auto;
+    }
+    .details-section {
+      margin-top: 20px;
+    }
+    .details-section h5 {
+      font-weight: bold;
+    }
+    .contact-info li {
+      list-style: none;
+    }
+    .note-section {
+      font-weight: bold;
+    }
+  </style>
+<div class="container">
     <!-- Header Image -->
     <div class="row">
       <div class="col-12">
@@ -106,4 +97,3 @@ import Layout from "@/layouts/templateRestaurants.astro";
       </div>
     </div>
   </div>
-</Layout>

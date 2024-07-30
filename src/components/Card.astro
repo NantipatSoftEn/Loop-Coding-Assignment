@@ -1,0 +1,29 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+
+interface Props {
+  name: string;
+  des: string;
+  time: string;
+}
+
+const { name, des, time } = Astro.props;
+---
+
+<div class="col-md-4 mb-4">
+  <HeaderLink href="/restaurants">
+    <div class="card">
+      <img
+        src="https://via.placeholder.com/350x250"
+        class="card-img-top"
+        alt="Labanoon Concert"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{name}</h5>
+        <p class="card-text">{des}</p>
+        <p class="card-text">{time}</p>
+        <!-- <a href="#" class="btn btn-primary">ดูเพิ่มเติม</a> -->
+      </div>
+    </div>
+  </HeaderLink>
+</div>
