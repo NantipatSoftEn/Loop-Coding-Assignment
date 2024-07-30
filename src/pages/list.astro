@@ -1,0 +1,63 @@
+---
+import Layout from "@/layouts/templateRestaurants.astro";
+---
+
+<script src="https://kit.fontawesome.com/your-fontawesome-kit-id.js" crossorigin="anonymous"></script>
+<Layout
+  title="About Me"
+  description="Lorem ipsum dolor sit amet"
+  pubDate={new Date("August 08 2021")}
+  heroImage="/blog-placeholder-about.jpg"
+>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">ค้นหาอีเวนต์ & ร้านอาหาร</h1>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="ค้นหาอีเวนต์ & ร้านอาหาร"
+          />
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button"
+              ><i class="fas fa-search"></i></button
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img
+            src="https://via.placeholder.com/350x250"
+            class="card-img-top"
+            alt="Pattern Cozy Bar"
+          />
+          <div class="card-body">
+            <h5 class="card-title">PATTERN COZY BAR</h5>
+            <p class="card-text">18:00 - 20:00 น.</p>
+            <a href="#" class="btn btn-primary">ดูเพิ่มเติม</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img
+            src="https://via.placeholder.com/350x250"
+            class="card-img-top"
+            alt="Labanoon Concert"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Labanoon CONCERT</h5>
+            <p class="card-text">LIVE AT ANANYA LIPE</p>
+            <p class="card-text">25 พ.ย. 2566</p>
+            <a href="#" class="btn btn-primary">ดูเพิ่มเติม</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
