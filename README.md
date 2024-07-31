@@ -17,3 +17,4 @@ Implement a restaurant reservation system where you'll implement user authentica
 - []  create form booking
 - []  create page res
 - []  create page login
+- https://github.com/appwrite/demos-for-astro
