@@ -1,3 +1,19 @@
+---
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const name = data.get("name");
+    const phone = data.get("phone");
+    // Do something with the data
+    console.log("data",data)
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+
 <style>
   .header-image {
     width: 100%;
@@ -5,7 +21,7 @@
   }
   .map-image {
     width: 100%;
-    height:  auto;
+    height: auto;
   }
   .details-section {
     margin-top: 20px;
@@ -20,6 +36,7 @@
     font-weight: bold;
   }
 </style>
+
 <div class="container">
   <!-- Header Image -->
   <div class="row">
@@ -39,10 +56,7 @@
         src="https://placehold.co/100x100"
         alt="Map"
         class="img-fluid map-image"
-      
       />
-      
-      
     </div>
     <div class="col-md-6">
       <div class="alert alert-light">
@@ -62,14 +76,36 @@
 
       <div class="alert alert-light">
         <h5 class="text-center">Restaurant Reservation</h5>
-        <form id="reservation-form">
+        <form id="reservation-form" method="POST">
           <div class="mb-3">
             <label for="name" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="name" required />
+            <input type="text" class="form-control" id="name" name="name"required />
           </div>
           <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" required />
+            <label for="phone">Phone Number</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="phone"
+              name="phone"
+              pattern="[0-9]{3}-[0-9]{7}"
+              required
+            />
+            <small>Format: 123-4567890</small>
+           
+          </div>
+          <!-- <div class="mb-3">
+            <label for="phone">Number of Guests</label>
+            <input
+              type="number"
+              class="form-control"
+              id="guests"
+              name="guests"
+              min="1"
+              max="10"
+              pattern="[0-9]{1}"
+              required
+            />
           </div>
           <div class="mb-3">
             <label for="date" class="form-label">Reservation Date</label>
@@ -78,7 +114,7 @@
           <div class="mb-3">
             <label for="time" class="form-label">Reservation Time</label>
             <input type="time" class="form-control" id="time" required />
-          </div>
+          </div> -->
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
