@@ -1,9 +1,26 @@
 ---
 import { restaurants, type IRestaurant } from "../mock/data";
 
-const { name } = Astro.props;
-let data: IRestaurant = restaurants[0]
-
+const { id } = Astro.props;
+let data: IRestaurant = {
+  id: 0,
+  name: "",
+  type: "",
+  phone: "",
+  timeOpen: "",
+  day: "",
+  image: "",
+  detail: "",
+};
+console.log("id",id)
+if (id == 1) {
+  data = restaurants[0];
+} else if (id == 2) {
+  data = restaurants[1];
+} else if (id == 3) {
+  data = restaurants[2];
+}
+console.log("restaurants",data)
 // if (Astro.request.method === "POST") {
 //   try {
 //     const data = await Astro.request.formData();
@@ -40,17 +57,48 @@ let data: IRestaurant = restaurants[0]
   .note-section {
     font-weight: bold;
   }
+
+  .image-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Adjust as needed */
+  }
+
+  .header-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .overlay-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: Add a background color with transparency */
+    padding: 10px;
+    border-radius: 5px;
+  }
 </style>
 
 <div class="container">
   <!-- Header Image -->
   <div class="row">
     <div class="col-12">
-      <img
-        src="https://placehold.co/1500x400"
+      <div class="card text-bg-dark">
+        <img src="https://img-service-v3.hungryhub.com/pr:sharp/rs:fill:0:0:0/g:ce/aHR0cHM6Ly9pbWFnZXMuaHVuZ3J5aHViLmNvbS91cGxvYWRzL2Jhbm5lci9kZXNrdG9wX3JldGluYV92ZXJzaW9ucy8zNDMvaG9tZS1wYWdlLWRlc2t0b3BfMTdfYXByLmpwZw==.jpg" class="card-img" alt="...">
+        <div class="card-img-overlay">
+          <h1 class="card-title">แอปจองมื้อพิเศษอันดับ 1 มากกว่า 1,500 ร้านอาหาร</h1>
+          <!-- <p class="card-text">จองเลย</p> -->
+          <!-- <p class="card-text"><small>Last updated 3 mins ago</small></p> -->
+        </div>
+      </div>
+      <!-- <img
+        src="https://img-service-v3.hungryhub.com/pr:sharp/rs:fill:0:0:0/g:ce/aHR0cHM6Ly9pbWFnZXMuaHVuZ3J5aHViLmNvbS91cGxvYWRzL2Jhbm5lci9kZXNrdG9wX3JldGluYV92ZXJzaW9ucy8zNDMvaG9tZS1wYWdlLWRlc2t0b3BfMTdfYXByLmpwZw==.jpg"
         alt="Pattern Cozy Bar"
         class="img-fluid header-image"
-      />
+      /> -->
     </div>
   </div>
 
@@ -58,7 +106,7 @@ let data: IRestaurant = restaurants[0]
   <div class="row details-section">
     <div class="col-md-6">
       <img
-        src="https://placehold.co/100x100"
+        src={data.image}
         alt="Map"
         class="img-fluid map-image"
       />
@@ -71,9 +119,8 @@ let data: IRestaurant = restaurants[0]
             <i class="bi bi-calendar"></i> เปิดบริการ: {data.day}
           </li>
           <li>
-            <i class="bi bi-clock"></i> เวลาเปิดตั้งแต่  {data.timeOpen}
+            <i class="bi bi-clock"></i> เวลาเปิดตั้งแต่ {data.timeOpen}
           </li>
-         
         </ul>
         <p>ร้านอาหาร: อิตาเลียน</p>
       </div>
@@ -112,7 +159,7 @@ let data: IRestaurant = restaurants[0]
   <div class="row details-section">
     <div class="col-12 alert alert-light">
       <h5>รายละเอียด</h5>
-      <div set:html={data.detail}></div>
+      <div set:html={data.detail} />
     </div>
   </div>
 </div>

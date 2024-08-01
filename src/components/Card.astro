@@ -7,14 +7,13 @@ interface Props {
 }
 
 const { restaurant } = Astro.props;
-const { name, type, timeOpen, day,image  } = restaurant as IRestaurant;
 ---
 
 <div class="col-md-4 mb-4">
   <HeaderLink href=`/restaurants/${restaurant.id}`>
     <div class="card">
       <img
-        src={image}
+        src={restaurant.image}
         class="card-img-top"
         alt="Labanoon Concert"
       />

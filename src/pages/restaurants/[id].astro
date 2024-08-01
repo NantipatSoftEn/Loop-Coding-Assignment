@@ -1,10 +1,10 @@
 ---
 import DetailRestaurant from "@/components/DetailRestaurant.astro";
 import Layout from "@/layouts/templateRestaurants.astro";
-const { name } = Astro.params;
+const { id } = Astro.params;
 ---
 
 <Layout>
-  <h1>{name}</h1>
-  <DetailRestaurant name={name}/>
+  <!-- <h1>{id}</h1> -->
+  <DetailRestaurant id={id}/>
 </Layout>
