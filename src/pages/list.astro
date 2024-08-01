@@ -1,6 +1,10 @@
 ---
 import Card from "@/components/Card.astro";
 import Layout from "@/layouts/templateRestaurants.astro";
+const user = Astro.locals.user;
+if (!user) {
+	return Astro.redirect("/signin");
+}
 ---
 
 <script
@@ -14,6 +18,12 @@ import Layout from "@/layouts/templateRestaurants.astro";
   heroImage="/blog-placeholder-about.jpg"
 >
   <div class="container mt-5">
+
+    <h1>Hi, {user.username}!</h1>
+		<p>Your user ID is {user.id}.</p>
+		<form method="post" action="/api/logout">
+			<button>Sign out</button>
+		</form>
     <!-- <h1 class="text-center mb-4">ค้นหาอีเวนต์ & ร้านอาหาร</h1> -->
     <!-- <div class="row">
       <div class="col-md-8 offset-md-2">
@@ -42,3 +52,16 @@ import Layout from "@/layouts/templateRestaurants.astro";
     </div>
   </div>
 </Layout>
+
+
+<script>
+	document.forms[0].addEventListener("submit", async (e) => {
+		e.preventDefault();
+		const formElement = e.target as HTMLFormElement;
+		await fetch(formElement.action, {
+			method: formElement.method,
+			body: new FormData(formElement)
+		});
+		window.location.href = "/signin";
+	});
+</script>
