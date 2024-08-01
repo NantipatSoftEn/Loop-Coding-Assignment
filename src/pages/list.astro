@@ -3,44 +3,20 @@ import Card from "@/components/Card.astro";
 import Layout from "@/layouts/templateRestaurants.astro";
 const user = Astro.locals.user;
 if (!user) {
-	return Astro.redirect("/signin");
+  return Astro.redirect("/signin");
 }
 ---
 
 <script
   src="https://kit.fontawesome.com/your-fontawesome-kit-id.js"
-  crossorigin="anonymous"
-></script>
-<Layout
-  title="About Me"
-  description="Lorem ipsum dolor sit amet"
-  pubDate={new Date("August 08 2021")}
-  heroImage="/blog-placeholder-about.jpg"
->
+  crossorigin="anonymous"></script>
+<Layout>
   <div class="container mt-5">
-
     <h1>Hi, {user.username}!</h1>
-		<p>Your user ID is {user.id}.</p>
-		<form method="post" action="/api/logout">
-			<button>Sign out</button>
-		</form>
-    <!-- <h1 class="text-center mb-4">ค้นหาอีเวนต์ & ร้านอาหาร</h1> -->
-    <!-- <div class="row">
-      <div class="col-md-8 offset-md-2">
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="ค้นหาอีเวนต์ & ร้านอาหาร"
-          />
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">
-              <img src="/loupe.png" width="32" height="32">
-            </button>
-          </div>
-        </div>
-      </div>
-    </div> -->
+    <p>Your user ID is {user.id}.</p>
+    <form method="post" action="/api/logout">
+      <button class="btn btn-danger">Sign out</button>
+    </form>
     <div class="row mt-4">
       <Card name="Italy" des="Italy" time="Open every day from 7-10pm" />
       <Card name="China" des="China" time="Open everyday from 5-10pm" />
@@ -53,15 +29,14 @@ if (!user) {
   </div>
 </Layout>
 
-
 <script>
-	document.forms[0].addEventListener("submit", async (e) => {
-		e.preventDefault();
-		const formElement = e.target as HTMLFormElement;
-		await fetch(formElement.action, {
-			method: formElement.method,
-			body: new FormData(formElement)
-		});
-		window.location.href = "/signin";
-	});
+  document.forms[0].addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formElement = e.target as HTMLFormElement;
+    await fetch(formElement.action, {
+      method: formElement.method,
+      body: new FormData(formElement),
+    });
+    window.location.href = "/signin";
+  });
 </script>

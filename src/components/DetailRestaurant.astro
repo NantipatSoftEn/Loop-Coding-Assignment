@@ -1,17 +1,22 @@
 ---
-if (Astro.request.method === "POST") {
-  try {
-    const data = await Astro.request.formData();
-    const name = data.get("name");
-    const phone = data.get("phone");
-    // Do something with the data
-    console.log("data",data)
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-  }
-}
+import { restaurants, type IRestaurant } from "../mock/data";
+
+const { name } = Astro.props;
+let data: IRestaurant = restaurants[0]
+
+// if (Astro.request.method === "POST") {
+//   try {
+//     const data = await Astro.request.formData();
+//     const name = data.get("name");
+//     const phone = data.get("phone");
+//     // Do something with the data
+//     console.log("data",data)
+//   } catch (error) {
+//     if (error instanceof Error) {
+//       console.error(error.message);
+//     }
+//   }
+// }
 ---
 
 <style>
@@ -60,24 +65,22 @@ if (Astro.request.method === "POST") {
     </div>
     <div class="col-md-6">
       <div class="alert alert-light">
-        <h5>Pattern Cozy Bar</h5>
+        <h5>{data.name}</h5>
         <ul class="list-unstyled">
           <li>
-            <i class="bi bi-calendar"></i> เปิดบริการ: อังคาร, พุธ, พฤหัสบดี, ศุกร์,
-            เสาร์ และ อาทิตย์
+            <i class="bi bi-calendar"></i> เปิดบริการ: {data.day}
           </li>
           <li>
-            <i class="bi bi-clock"></i> เวลาเปิดตั้งแต่ 18:00 - 20:00 น.
+            <i class="bi bi-clock"></i> เวลาเปิดตั้งแต่  {data.timeOpen}
           </li>
-          <li><i class="bi bi-person"></i> อายุ 20+</li>
+         
         </ul>
-        <p>เปิดให้จองล่วงหน้าเวลา 10:00 - 18:30 น.</p>
+        <p>ร้านอาหาร: อิตาเลียน</p>
       </div>
 
       <div class="alert alert-light">
         <h5 class="text-center">Restaurant Reservation</h5>
         <form id="reservation-form" method="POST">
-          
           <div class="mb-3">
             <label for="phone">Number of Guests</label>
             <input
@@ -109,34 +112,7 @@ if (Astro.request.method === "POST") {
   <div class="row details-section">
     <div class="col-12 alert alert-light">
       <h5>รายละเอียด</h5>
-      <p>Pattern Cozy Bar จะมีทั้งหมด 3 โซน</p>
-      <ul>
-        <li>
-          โซน outdoor
-          จะเป็นโซนนั่งทานอาหารชิลล์ๆมีเก้าอี้ให้นั่งแบบสบายๆเอาใจสายชอบ
-          ดูชอบฟังเพลงสดไม่อยากเต้นต้องโซนนี้เลย บรรยากาศหน้าร้าน
-        </li>
-        <li>โซน indoor จะเป็นโซนข้างในสำหรับสายเต้นและบาร์ค็อกเทล</li>
-        <li>
-          โซน ข้างนอก จะเป็นโซนมีนั่งฟังเพลงส่วนตัว ไลฟ์สดๆ มองเห็นลวงบนเวที
-        </li>
-      </ul>
-      <p>ประเภทอาหาร : เครื่องดื่ม,เหล้าเบียร์,ไวน์,คอกเทล,อาหารกับข้าว</p>
-      <p>เปิด : 18:00 – 02:00 น.</p>
-      <p>ติดต่อสอบถาม</p>
-      <ul class="contact-info">
-        <li>โทร : 082-091-9982</li>
-        <li>LINE OA : @cozybar</li>
-        <li>Facebook : Pattern Cozy bar</li>
-      </ul>
-      <p class="note-section">**หมายเหตุ**</p>
-      <ul>
-        <li>โปรดตรวจสอบวันที่ ก่อนการยืนยันการจอง</li>
-        <li>เวลาปล่อยใต้: 19.30 น.</li>
-        <li>ระบบเปิดจองโต๊ะเวลา 10.00 น. และปิดจองโต๊ะเวลา 18.30 น.</li>
-        <li>สามารถจองโต๊ะล่วงหน้าได้</li>
-        <li>พนักงานจะติดต่อกลับเมื่อการจองโต๊ะสำเร็จ เวลาประมาณ 17.00 น.</li>
-      </ul>
+      <div set:html={data.detail}></div>
     </div>
   </div>
 </div>
