@@ -1,8 +1,7 @@
 ---
 import DetailRestaurant from "@/components/DetailRestaurant.astro";
 import Layout from "@/layouts/templateRestaurants.astro";
-
-const search = Astro.url.searchParams.get("search") || "";
+const { name } = Astro.params;
 ---
 
 <Layout
@@ -11,6 +10,6 @@ const search = Astro.url.searchParams.get("search") || "";
   pubDate={new Date("August 08 2021")}
   heroImage="/blog-placeholder-about.jpg"
 >
-  <h1>{search}</h1>
+<h1>{name}</h1>
   <DetailRestaurant />
 </Layout>

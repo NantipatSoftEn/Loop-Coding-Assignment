@@ -85,7 +85,7 @@ import Layout from "@/layouts/templateRestaurants.astro";
       body: new FormData(formElement),
     });
     if (response.ok) {
-      window.location.href = "/list";
+      window.location.href = "/signin";
     } else {
       errorMessageElement.innerText = (await response.json()).error;
     }
