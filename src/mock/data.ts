@@ -17,7 +17,7 @@ export const restaurants: Array<IRestaurant> = [
     phone: "123456789",
     timeOpen: "7:00 - 10:00 pm",
     day: "Open every day",
-    image: "https://via.placeholder.com/150",
+    image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092",
     detail: `
         <p><strong>ที่ตั้ง:</strong> ตั้งอยู่ใจกลางเมืองบนถนนสุขุมวิท ซอย 24 กรุงเทพมหานคร</p>
         <h2>บรรยากาศ:</h2>
@@ -44,7 +44,7 @@ export const restaurants: Array<IRestaurant> = [
     phone: "02-345-6789",
     timeOpen: "7:00 PM - 10:00 PM",
     day: "Monday - Friday",
-    image: "https://example.com/image_france.jpg",
+    image: "https://img-service-v3.hungryhub.com/pr:sharp/rs:fill:0:0:0/g:ce/aHR0cHM6Ly9pbWFnZXMuaHVuZ3J5aHViLmNvbS91cGxvYWRzL3Jlc3RhdXJhbnRzLzMwMDUvcGhvdG9zLzEzMTgxNS9SYWNrTXVsdGlwYXJ0MjAyNDA1MTYtMTQzLWxwdTkxcS5qcGc=.webp",
     detail:
       "Restaurant France provides a sophisticated French dining experience. Our menu features classic French cuisine made with fresh, high-quality ingredients.",
   },
@@ -55,7 +55,7 @@ export const restaurants: Array<IRestaurant> = [
     phone: "02-234-5678",
     timeOpen: "5:00 PM - 10:00 PM",
     day: "Everyday",
-    image: "https://example.com/image_china.jpg",
+    image: "https://img-service-v3.hungryhub.com/pr:sharp/rs:fill:0:0:0/g:ce/aHR0cHM6Ly9pbWFnZXMuaHVuZ3J5aHViLmNvbS91cGxvYWRzL3Jlc3RhdXJhbnRzLzMwMDUvcGhvdG9zLzExNzE2NS9SYWNrTXVsdGlwYXJ0MjAyNDAxMjItMTA2MDc2LTFkMHJiMnguanBn.webp",
     detail:
       "Restaurant China offers an authentic Chinese dining experience with a wide variety of traditional dishes. Enjoy our cozy ambiance and friendly service.",
   },
