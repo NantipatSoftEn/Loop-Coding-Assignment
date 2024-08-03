@@ -1,28 +1,18 @@
-const currentTime = "18:00"; // 5:00 PM in 24-hour format
-const convertTo24HourFormat = (time: string) => {
-  const [timePart, modifier] = time.split(" ");
-  let [hours, minutes] = timePart.split(":");
-  if (hours === "12") {
-    hours = "00";
-  }
-  if (modifier === "PM") {
-    hours = (parseInt(hours, 10) + 12).toString();
-  }
-  return `${hours.padStart(2, "0")}:${minutes}`;
+import moment from "moment";
+
+const convertTo24HourFormat = (time: string): string => {
+  return moment(time, ["h:mm A"]).format("HH:mm");
 };
 
-const restaurantOpenTime = convertTo24HourFormat("5:00 PM");
-console.log("convertTo24HourFormat", restaurantOpenTime);
-
-const isRestaurantOpenAfter = (
+export const isRestaurantTimeOpen = (
   restaurantOpenTime: string,
-  currentTime: string
-) => {
-  return restaurantOpenTime > currentTime;
+  restaurantCloseTime: string
+): boolean => {
+  const formattedRestaurantOpenTime = convertTo24HourFormat(restaurantOpenTime);
+  const formattedRestaurantCloseTime = convertTo24HourFormat(restaurantCloseTime);
+  const currentTime = moment().format("HH:mm");
+  return (
+    formattedRestaurantOpenTime >= currentTime &&
+    currentTime <= formattedRestaurantCloseTime
+  );
 };
-
-if (isRestaurantOpenAfter(restaurantOpenTime, currentTime)) {
-  console.log(`The restaurant opens after ${restaurantOpenTime}`);
-} else {
-  console.log(`The restaurant does not open after ${currentTime}`);
-}

@@ -1,38 +1,40 @@
 import moment from "moment";
 
-export const isOpenOnDay = (day: string, openDays: string): boolean => {
-  if (openDays === "Open everyday") {
-    return true;
-  }
+type Status = "Open" | "Closed";
 
-  const daysMap: { [key: string]: number } = {
-    Monday: 1,
-    Tuesday: 2,
-    Wednesday: 3,
-    Thursday: 4,
-    Friday: 5,
-    Saturday: 6,
-    Sunday: 7,
-  };
+const daysMap: { [key: string]: number } = {
+  Monday: 1,
+  Tuesday: 2,
+  Wednesday: 3,
+  Thursday: 4,
+  Friday: 5,
+  Saturday: 6,
+  Sunday: 7,
+};
 
-  const [startDay, endDay] = openDays.replace("Open ", "").split(" - ");
-  const startDayIndex = daysMap[startDay];
-  const endDayIndex = daysMap[endDay];
-  const currentDayIndex = daysMap[day];
+const getDayIndex = (day: string): number => daysMap[day];
 
+const isWithinRange = (
+  currentDayIndex: number,
+  startDayIndex: number,
+  endDayIndex: number
+): boolean => {
   if (startDayIndex <= endDayIndex) {
     return currentDayIndex >= startDayIndex && currentDayIndex <= endDayIndex;
   } else {
-    // Handle wrap-around case (e.g., "Friday - Monday")
     return currentDayIndex >= startDayIndex || currentDayIndex <= endDayIndex;
   }
 };
 
-// Example usage:
-const openDays1 = "Open everyday";
-const openDays2 = "Open Monday - Friday";
+export const isOpenOnDay = (openDays: string): boolean => {
+  if (openDays === "Open everyday") {
+    return true;
+  }
 
-const currentDay = moment().format("dddd");
+  const [startDay, endDay] = openDays.replace("Open ", "").split(" - ");
+  const startDayIndex = getDayIndex(startDay);
+  const endDayIndex = getDayIndex(endDay);
+  const currentDayIndex = getDayIndex(moment().format("dddd"));
 
-console.log(isOpenOnDay(currentDay, openDays1)); // true
-console.log(isOpenOnDay(currentDay, openDays2)); // depends on the current day
+  return isWithinRange(currentDayIndex, startDayIndex, endDayIndex);
+};

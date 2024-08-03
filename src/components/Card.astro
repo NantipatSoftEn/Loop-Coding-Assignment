@@ -1,14 +1,14 @@
 ---
 import type { IRestaurant } from "@/mock/data";
 import HeaderLink from "./HeaderLink.astro";
-import { isOpenOnDay } from "@/pages/api/daysOpen"
+import { isOpenOnDay } from "@/pages/api/daysOpen";
 import moment from "moment";
+import { getRestaurantStatus } from "@/pages/api/calculate";
 interface Props {
   restaurant: IRestaurant;
 }
 const { restaurant } = Astro.props;
 const currentDay = moment().format("dddd");
-
 ---
 
 <div class="col-md-4 mb-4">
@@ -21,7 +21,15 @@ const currentDay = moment().format("dddd");
           alt="Labanoon Concert"
         />
         <div class="image-text">
-          <h5 class="card-title">{isOpenOnDay(currentDay,restaurant.day)}</h5>
+          <h5 class="card-title">
+            {
+              getRestaurantStatus(
+                restaurant.day,
+                restaurant.time.open,
+                restaurant.time.close
+              )
+            }
+          </h5>
           <!-- <p class="card-text">{restaurant.type}</p> -->
         </div>
       </div>
@@ -37,7 +45,6 @@ const currentDay = moment().format("dddd");
     </div>
   </HeaderLink>
 </div>
-
 
 <style>
   .image-container {
