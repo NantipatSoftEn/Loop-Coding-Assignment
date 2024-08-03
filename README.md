@@ -14,7 +14,9 @@ Implement a restaurant reservation system where you'll implement user authentica
 
 ## Task
 
-- []  create form booking
-- []  create page res
-- []  create page login
-- https://github.com/appwrite/demos-for-astro
+- [x]  create form booking
+- [x]  create page res
+- [x]  create page login
+
+## Time
+ สมมุติตอนนี้เวลา  18:00 ร้านเปิดตั้งเวลา  5:00PM - 10PM = ตอนนี้ร้านเปิด

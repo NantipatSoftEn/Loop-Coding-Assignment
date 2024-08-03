@@ -19,7 +19,7 @@ export interface IRestaurant {
   type: string;
   phone: string;
   time: ITime;
-  day: Array<Days>;
+  day: string;
   image: string;
   detail: string;
 }
@@ -31,7 +31,7 @@ export const restaurants: Array<IRestaurant> = [
     type: "อิตาเลียน",
     phone: "123456789",
     time: { open: "7:00PM", close: "10:00 PM" },
-    day: [1, 2, 3, 4, 5, 6, 7] as Array<Days>,
+    day: "Open everyday",
     image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092",
     detail: `
         <p><strong>ที่ตั้ง:</strong> ตั้งอยู่ใจกลางเมืองบนถนนสุขุมวิท ซอย 24 กรุงเทพมหานคร</p>
@@ -58,7 +58,7 @@ export const restaurants: Array<IRestaurant> = [
     type: "French",
     phone: "02-345-6789",
     time: { open: "5:00PM", close: "10:00 PM" },
-    day: [1, 2, 3, 4, 5, 6, 7] as Array<Days>,
+    day: "Open everyday",
     image:
       "https://img-service-v3.hungryhub.com/pr:sharp/rs:fill:0:0:0/g:ce/aHR0cHM6Ly9pbWFnZXMuaHVuZ3J5aHViLmNvbS91cGxvYWRzL3Jlc3RhdXJhbnRzLzMwMDUvcGhvdG9zLzEzMTgxNS9SYWNrTXVsdGlwYXJ0MjAyNDA1MTYtMTQzLWxwdTkxcS5qcGc=.webp",
     detail:
@@ -70,7 +70,7 @@ export const restaurants: Array<IRestaurant> = [
     type: "Chinese",
     phone: "02-234-5678",
     time: { open: "7:00PM", close: "10:00 PM" },
-    day: [1, 2, 3, 4, 5] as Array<Days>,
+    day: "Open Monday - Friday",
     image:
       "https://img-service-v3.hungryhub.com/pr:sharp/rs:fill:0:0:0/g:ce/aHR0cHM6Ly9pbWFnZXMuaHVuZ3J5aHViLmNvbS91cGxvYWRzL3Jlc3RhdXJhbnRzLzE2ODQvcGhvdG9zLzEzNzcyOC9SYWNrTXVsdGlwYXJ0MjAyNDA3MjQtMTQ0LXJmYTg0ZC5qcGc=.webp",
     detail:
