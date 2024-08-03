@@ -1,4 +1,6 @@
-const isOpenOnDay = (day: string, openDays: string): boolean => {
+import moment from "moment";
+
+export const isOpenOnDay = (day: string, openDays: string): boolean => {
   if (openDays === "Open everyday") {
     return true;
   }
@@ -30,7 +32,7 @@ const isOpenOnDay = (day: string, openDays: string): boolean => {
 const openDays1 = "Open everyday";
 const openDays2 = "Open Monday - Friday";
 
-console.log(isOpenOnDay("Wednesday", openDays1)); // true
-console.log(isOpenOnDay("Saturday", openDays1)); // true
-console.log(isOpenOnDay("Wednesday", openDays2)); // true
-console.log(isOpenOnDay("Saturday", openDays2)); // false
+const currentDay = moment().format("dddd");
+
+console.log(isOpenOnDay(currentDay, openDays1)); // true
+console.log(isOpenOnDay(currentDay, openDays2)); // depends on the current day

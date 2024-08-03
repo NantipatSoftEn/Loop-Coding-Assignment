@@ -17,6 +17,9 @@ Implement a restaurant reservation system where you'll implement user authentica
 - [x]  create form booking
 - [x]  create page res
 - [x]  create page login
+- [x]  create time  & day restaurants logic 
+- [ ]  implement UI
+- [ ]  submit form and record
 
 ## Time
  สมมุติตอนนี้เวลา  18:00 ร้านเปิดตั้งเวลา  5:00PM - 10PM = ตอนนี้ร้านเปิด
