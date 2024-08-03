@@ -20,10 +20,15 @@ if (!user) {
       <button class="btn btn-danger">Sign out</button>
     </form>
     <div class="row mt-4">
-      
-      {restaurants.map((restaurant: IRestaurant) => (
-        <Card restaurant={restaurant}/>
-      ))}
+      {
+        restaurants
+          .filter((restaurant: IRestaurant) => {
+            // Replace 'desiredTime' with the specific time condition you want to check
+            const desiredTime = "18:00"; // Example: show restaurants open after 6 PM
+            return restaurant.time.open > desiredTime;
+          })
+          .map((restaurant: IRestaurant) => <Card restaurant={restaurant} />)
+      }
     </div>
   </div>
 </Layout>
