@@ -26,7 +26,7 @@ const isWithinRange = (
   }
 };
 
-export const isOpenOnDay = (openDays: string): boolean => {
+export const isOpenOnDay = (openDays: string,isDevMode:boolean): boolean => {
   if (openDays === "Open everyday") {
     return true;
   }
@@ -34,7 +34,7 @@ export const isOpenOnDay = (openDays: string): boolean => {
   const [startDay, endDay] = openDays.replace("Open ", "").split(" - ");
   const startDayIndex = getDayIndex(startDay);
   const endDayIndex = getDayIndex(endDay);
-  const currentDayIndex = getDayIndex(moment().format("dddd"));
+  const currentDayIndex = getDayIndex(!isDevMode ? moment().format("dddd"): "Sunday");
 
   return isWithinRange(currentDayIndex, startDayIndex, endDayIndex);
 };

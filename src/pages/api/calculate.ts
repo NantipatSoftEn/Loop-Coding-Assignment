@@ -4,11 +4,12 @@ import { isRestaurantTimeOpen } from "./time";
 export const getRestaurantStatus = (
   openDays: string,
   restaurantOpenTime: string,
-  restaurantCloseTime: string
+  restaurantCloseTime: string,
+  isDevMode=false
 ): string => {
   if (
-    isOpenOnDay(openDays) &&
-    isRestaurantTimeOpen(restaurantOpenTime, restaurantCloseTime)
+    isOpenOnDay(openDays,isDevMode) &&
+    isRestaurantTimeOpen(restaurantOpenTime, restaurantCloseTime,isDevMode)
   ) {
     return "Open";
   }
