@@ -15,13 +15,14 @@ db.exec(`CREATE TABLE IF NOT EXISTS session (
     FOREIGN KEY (user_id) REFERENCES user(id)
 )`)
 
-db.exec(`
-    CREATE TABLE IF NOT EXISTS bookings (
+db.exec(`CREATE TABLE IF NOT EXISTS bookings (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       guests INTEGER,
       date TEXT,
       time TEXT,
-      username TEXT
+      username TEXT,
+      restaurant TEXT,
+      status INTEGER
     )
   `)
 
@@ -31,10 +32,18 @@ export interface DatabaseUser {
   password_hash: string
 }
 
+export enum Status {
+  Reserve,
+  CheckIn,
+  CheckOut,
+}
+
 export interface DataBooking {
   id: string
   guests: number
   date: string
   time: string
   username: string
+  restaurant: string
+  status?: Status
 }

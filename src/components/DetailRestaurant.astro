@@ -1,5 +1,6 @@
 ---
 import { restaurants, type IRestaurant } from '../mock/data'
+import "@/styles/detailRestaurant.css"
 const user = Astro.locals.user
 if (!user) {
   return Astro.redirect('/signin')
@@ -26,72 +27,7 @@ if (id == 1) {
 } else if (id == 3) {
   data = restaurants[2]
 }
-// console.log("restaurants", data);
-// if (Astro.request.method === "POST") {
-//   try {
-//     const data = await Astro.request.formData();
-//     const name = data.get("name");
-//     const phone = data.get("phone");
-//     // Do something with the data
-//     console.log("data",data)
-//   } catch (error) {
-//     if (error instanceof Error) {
-//       console.error(error.message);
-//     }
-//   }
-// }
 ---
-
-<style>
-  .header-image {
-    width: 100%;
-    height: auto;
-  }
-  .map-image {
-    width: 100%;
-    height: auto;
-  }
-  .details-section {
-    margin-top: 20px;
-  }
-  .details-section h5 {
-    font-weight: bold;
-  }
-  .contact-info li {
-    list-style: none;
-  }
-  .note-section {
-    font-weight: bold;
-  }
-
-  .image-container {
-    position: relative;
-    width: 100%;
-    max-width: 600px; /* Adjust as needed */
-  }
-
-  .header-image {
-    width: 100%;
-    height: auto;
-  }
-
-  .overlay-message {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-align: center;
-    background-color: rgba(
-      0,
-      0,
-      0,
-      0.5
-    ); /* Optional: Add a background color with transparency */
-    padding: 10px;
-    border-radius: 5px;
-  }
-</style>
 
 <div class="container">
   <!-- Header Image -->
@@ -183,6 +119,17 @@ if (id == 1) {
               id="username"
               name="username"
               value={user.username}
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <input
+              type="hidden"
+              class="form-control"
+              id="restaurant"
+              name="restaurant"
+              value={data.name}
               required
             />
           </div>
