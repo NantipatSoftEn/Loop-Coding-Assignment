@@ -1,6 +1,6 @@
 interface ITime {
-  open: string;
-  close: string;
+  open: string
+  close: string
 }
 
 enum Days {
@@ -14,25 +14,25 @@ enum Days {
 }
 
 export interface IRestaurant {
-  id: number;
-  name: string;
-  type: string;
-  phone: string;
-  time: ITime;
-  day: string;
-  image: string;
-  detail: string;
+  id: number
+  name: string
+  type: string
+  phone: string
+  time: ITime
+  day: string
+  image: string
+  detail: string
 }
 
 export const restaurants: Array<IRestaurant> = [
   {
     id: 1,
-    name: "ลา ดอลเช่ วีต้า (La Dolce Vita)",
-    type: "อิตาเลียน",
-    phone: "123456789",
-    time: { open: "7:00PM", close: "10:00 PM" },
-    day: "Open everyday",
-    image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092",
+    name: 'ลา ดอลเช่ วีต้า (La Dolce Vita)',
+    type: 'อิตาเลียน',
+    phone: '123456789',
+    time: { open: '7:00PM', close: '10:00 PM' },
+    day: 'Open everyday',
+    image: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092',
     detail: `
         <p><strong>ที่ตั้ง:</strong> ตั้งอยู่ใจกลางเมืองบนถนนสุขุมวิท ซอย 24 กรุงเทพมหานคร</p>
         <h2>บรรยากาศ:</h2>
@@ -54,26 +54,26 @@ export const restaurants: Array<IRestaurant> = [
   },
   {
     id: 2,
-    name: "Restaurant France",
-    type: "French",
-    phone: "02-345-6789",
-    time: { open: "5:00PM", close: "10:00 PM" },
-    day: "Open everyday",
+    name: 'Restaurant France',
+    type: 'French',
+    phone: '02-345-6789',
+    time: { open: '5:00PM', close: '10:00 PM' },
+    day: 'Open everyday',
     image:
-      "https://img-service-v3.hungryhub.com/pr:sharp/rs:fill:0:0:0/g:ce/aHR0cHM6Ly9pbWFnZXMuaHVuZ3J5aHViLmNvbS91cGxvYWRzL3Jlc3RhdXJhbnRzLzMwMDUvcGhvdG9zLzEzMTgxNS9SYWNrTXVsdGlwYXJ0MjAyNDA1MTYtMTQzLWxwdTkxcS5qcGc=.webp",
+      'https://img-service-v3.hungryhub.com/pr:sharp/rs:fill:0:0:0/g:ce/aHR0cHM6Ly9pbWFnZXMuaHVuZ3J5aHViLmNvbS91cGxvYWRzL3Jlc3RhdXJhbnRzLzMwMDUvcGhvdG9zLzEzMTgxNS9SYWNrTXVsdGlwYXJ0MjAyNDA1MTYtMTQzLWxwdTkxcS5qcGc=.webp',
     detail:
-      "Restaurant France provides a sophisticated French dining experience. Our menu features classic French cuisine made with fresh, high-quality ingredients.",
+      'Restaurant France provides a sophisticated French dining experience. Our menu features classic French cuisine made with fresh, high-quality ingredients.',
   },
   {
     id: 3,
-    name: "Restaurant China",
-    type: "Chinese",
-    phone: "02-234-5678",
-    time: { open: "7:00PM", close: "10:00 PM" },
-    day: "Open Monday - Friday",
+    name: 'Restaurant China',
+    type: 'Chinese',
+    phone: '02-234-5678',
+    time: { open: '7:00PM', close: '10:00 PM' },
+    day: 'Open Monday - Friday',
     image:
-      "https://img-service-v3.hungryhub.com/pr:sharp/rs:fill:0:0:0/g:ce/aHR0cHM6Ly9pbWFnZXMuaHVuZ3J5aHViLmNvbS91cGxvYWRzL3Jlc3RhdXJhbnRzLzE2ODQvcGhvdG9zLzEzNzcyOC9SYWNrTXVsdGlwYXJ0MjAyNDA3MjQtMTQ0LXJmYTg0ZC5qcGc=.webp",
+      'https://img-service-v3.hungryhub.com/pr:sharp/rs:fill:0:0:0/g:ce/aHR0cHM6Ly9pbWFnZXMuaHVuZ3J5aHViLmNvbS91cGxvYWRzL3Jlc3RhdXJhbnRzLzE2ODQvcGhvdG9zLzEzNzcyOC9SYWNrTXVsdGlwYXJ0MjAyNDA3MjQtMTQ0LXJmYTg0ZC5qcGc=.webp',
     detail:
-      "Restaurant China offers an authentic Chinese dining experience with a wide variety of traditional dishes. Enjoy our cozy ambiance and friendly service.",
+      'Restaurant China offers an authentic Chinese dining experience with a wide variety of traditional dishes. Enjoy our cozy ambiance and friendly service.',
   },
-];
+]

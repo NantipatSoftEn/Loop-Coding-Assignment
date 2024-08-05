@@ -1,17 +1,17 @@
-import { isOpenOnDay } from "./daysOpen";
-import { isRestaurantTimeOpen } from "./time";
+import { isOpenOnDay } from './daysOpen'
+import { isRestaurantTimeOpen } from './time'
 
 export const getRestaurantStatus = (
   openDays: string,
   restaurantOpenTime: string,
   restaurantCloseTime: string,
-  isDevMode=false
+  isDevMode = false
 ): string => {
   if (
-    isOpenOnDay(openDays,isDevMode) &&
-    isRestaurantTimeOpen(restaurantOpenTime, restaurantCloseTime,isDevMode)
+    isOpenOnDay(openDays, isDevMode) &&
+    isRestaurantTimeOpen(restaurantOpenTime, restaurantCloseTime, isDevMode)
   ) {
-    return "Open";
+    return 'Open'
   }
-  return "Closed";
-};
+  return 'Closed'
+}

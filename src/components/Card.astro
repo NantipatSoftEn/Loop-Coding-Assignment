@@ -1,14 +1,14 @@
 ---
-import type { IRestaurant } from "@/mock/data";
-import HeaderLink from "./HeaderLink.astro";
-import { isOpenOnDay } from "@/pages/api/daysOpen";
-import moment from "moment";
-import { getRestaurantStatus } from "@/pages/api/calculate";
+import type { IRestaurant } from '@/mock/data'
+import HeaderLink from './HeaderLink.astro'
+import { isOpenOnDay } from '@/pages/api/daysOpen'
+import moment from 'moment'
+import { getRestaurantStatus } from '@/pages/api/calculate'
 interface Props {
-  restaurant: IRestaurant;
+  restaurant: IRestaurant
 }
-const { restaurant } = Astro.props;
-const currentDay = moment().format("dddd");
+const { restaurant } = Astro.props
+const currentDay = moment().format('dddd')
 ---
 
 <div class="col-md-4 mb-4">

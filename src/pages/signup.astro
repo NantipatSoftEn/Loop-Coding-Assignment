@@ -1,10 +1,8 @@
 ---
-import Layout from "@/layouts/templateRestaurants.astro";
+import Layout from '@/layouts/templateRestaurants.astro'
 ---
 
-<Layout
-
->
+<Layout>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-5">
@@ -71,20 +69,20 @@ import Layout from "@/layouts/templateRestaurants.astro";
   </div>
 </Layout>
 <script>
-  const errorMessageElement = document.getElementById("form-error")!;
+  const errorMessageElement = document.getElementById('form-error')!
 
-  document.forms[0].addEventListener("submit", async (e) => {
-    e.preventDefault();
-    errorMessageElement.innerText = "";
-    const formElement = e.target as HTMLFormElement;
+  document.forms[0].addEventListener('submit', async e => {
+    e.preventDefault()
+    errorMessageElement.innerText = ''
+    const formElement = e.target as HTMLFormElement
     const response = await fetch(formElement.action, {
       method: formElement.method,
       body: new FormData(formElement),
-    });
+    })
     if (response.ok) {
-      window.location.href = "/signin";
+      window.location.href = '/signin'
     } else {
-      errorMessageElement.innerText = (await response.json()).error;
+      errorMessageElement.innerText = (await response.json()).error
     }
-  });
+  })
 </script>

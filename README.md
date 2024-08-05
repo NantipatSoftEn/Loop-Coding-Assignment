@@ -6,20 +6,38 @@ Implement a restaurant reservation system where you'll implement user authentica
 
 - User sign-up and login functionality.
 - User can view a list of restaurants on platform
-    - Restaurant Italy: Open every day from 7-10pm
-    - Restaurant China: Open everyday from 5-10pm
-    - Restaurant France: Open Monday - Friday from 7-10pm
+  - Restaurant Italy: Open every day from 7-10pm
+  - Restaurant China: Open everyday from 5-10pm
+  - Restaurant France: Open Monday - Friday from 7-10pm
 - User can make a booking at a restaurant (time, number of people)
 - **Extra**: User can view all reservations made on platform (this can be in a separate page on the same website)
 
 ## Task
 
-- [x]  create form booking
-- [x]  create page res
-- [x]  create page login
-- [x]  create time  & day restaurants logic 
-- [ ]  implement UI
-- [ ]  submit form and record
+- [x] create form booking
+- [x] create page res
+- [x] create page login
+- [x] create time & day restaurants logic
+- [x] implement UI
+- [ ] submit form and record
 
-## Time
- สมมุติตอนนี้เวลา  18:00 ร้านเปิดตั้งเวลา  5:00PM - 10PM = ตอนนี้ร้านเปิด
+## Time Test Case
+
+## design state
+
+```ts
+enum Status {
+  Reserve,
+  CheckIn,
+  CheckOut,
+}
+
+const o = {
+  username: 'znantipat',
+  reserves: [
+    { name: '1', status: Status.Reserve },
+    { name: '2', status: Status.Reserve },
+    { name: '3', status: Status.Reserve },
+  ],
+}
+```

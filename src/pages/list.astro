@@ -1,11 +1,12 @@
 ---
-import Card from "@/components/Card.astro";
-import Layout from "@/layouts/templateRestaurants.astro";
-import { restaurants, type IRestaurant } from "../mock/data";
+import Card from '@/components/Card.astro'
+import Layout from '@/layouts/templateRestaurants.astro'
+import { restaurants, type IRestaurant } from '../mock/data'
 
-const user = Astro.locals.user;
+const user = Astro.locals.user
+console.log('user', user)
 if (!user) {
-  return Astro.redirect("/signin");
+  return Astro.redirect('/signin')
 }
 ---
 
@@ -21,20 +22,22 @@ if (!user) {
     </form>
     <div class="row mt-4">
       {
-        restaurants.map((restaurant: IRestaurant) => <Card restaurant={restaurant} />)
+        restaurants.map((restaurant: IRestaurant) => (
+          <Card restaurant={restaurant} />
+        ))
       }
     </div>
   </div>
 </Layout>
 
 <script>
-  document.forms[0].addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const formElement = e.target as HTMLFormElement;
+  document.forms[0].addEventListener('submit', async e => {
+    e.preventDefault()
+    const formElement = e.target as HTMLFormElement
     await fetch(formElement.action, {
       method: formElement.method,
       body: new FormData(formElement),
-    });
-    window.location.href = "/signin";
-  });
+    })
+    window.location.href = '/signin'
+  })
 </script>

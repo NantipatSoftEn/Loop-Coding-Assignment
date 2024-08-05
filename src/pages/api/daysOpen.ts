@@ -1,6 +1,6 @@
-import moment from "moment";
+import moment from 'moment'
 
-type Status = "Open" | "Closed";
+type Status = 'Open' | 'Closed'
 
 const daysMap: { [key: string]: number } = {
   Monday: 1,
@@ -10,9 +10,9 @@ const daysMap: { [key: string]: number } = {
   Friday: 5,
   Saturday: 6,
   Sunday: 7,
-};
+}
 
-const getDayIndex = (day: string): number => daysMap[day];
+const getDayIndex = (day: string): number => daysMap[day]
 
 const isWithinRange = (
   currentDayIndex: number,
@@ -20,21 +20,23 @@ const isWithinRange = (
   endDayIndex: number
 ): boolean => {
   if (startDayIndex <= endDayIndex) {
-    return currentDayIndex >= startDayIndex && currentDayIndex <= endDayIndex;
+    return currentDayIndex >= startDayIndex && currentDayIndex <= endDayIndex
   } else {
-    return currentDayIndex >= startDayIndex || currentDayIndex <= endDayIndex;
+    return currentDayIndex >= startDayIndex || currentDayIndex <= endDayIndex
   }
-};
+}
 
-export const isOpenOnDay = (openDays: string,isDevMode:boolean): boolean => {
-  if (openDays === "Open everyday") {
-    return true;
+export const isOpenOnDay = (openDays: string, isDevMode: boolean): boolean => {
+  if (openDays === 'Open everyday') {
+    return true
   }
 
-  const [startDay, endDay] = openDays.replace("Open ", "").split(" - ");
-  const startDayIndex = getDayIndex(startDay);
-  const endDayIndex = getDayIndex(endDay);
-  const currentDayIndex = getDayIndex(!isDevMode ? moment().format("dddd"): "Sunday");
+  const [startDay, endDay] = openDays.replace('Open ', '').split(' - ')
+  const startDayIndex = getDayIndex(startDay)
+  const endDayIndex = getDayIndex(endDay)
+  const currentDayIndex = getDayIndex(
+    !isDevMode ? moment().format('dddd') : 'Sunday'
+  )
 
-  return isWithinRange(currentDayIndex, startDayIndex, endDayIndex);
-};
+  return isWithinRange(currentDayIndex, startDayIndex, endDayIndex)
+}
