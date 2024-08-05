@@ -1,5 +1,3 @@
-import { lucia } from '../../lib/auth'
-import { verify } from '@node-rs/argon2'
 import { db, Status, type DataBooking } from '../../lib/db'
 
 import type { APIContext } from 'astro'
@@ -40,6 +38,7 @@ export async function fetchBookings() {
 export async function POST(context: APIContext): Promise<Response> {
   const formData = await context.request.formData()
   console.log('formData', formData)
+  
   const dataBooking: DataBooking = {
     guests: formData.get('guests') as unknown as number,
     date: formData.get('date') as string,
@@ -48,10 +47,8 @@ export async function POST(context: APIContext): Promise<Response> {
     id: formData.get('id') as string,
     restaurant: formData.get('restaurant') as string,
   }
-  
+
   console.log('formData', dataBooking)
   saveBooking(dataBooking)
-  const booking: Array<DataBooking> = (await fetchBookings()) as DataBooking[]
-  console.log('booking', booking)
   return new Response()
 }
