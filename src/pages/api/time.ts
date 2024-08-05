@@ -1,6 +1,6 @@
 import moment from 'moment'
 
-const convertTo24HourFormat = (time: string): string => {
+export const convertTo24HourFormat = (time: string): string => {
   return moment(time, ['h:mm A']).format('HH:mm')
 }
 

@@ -1,14 +1,14 @@
-import { db } from "@/lib/db"
+import { db, type DataBooking } from "@/lib/db"
 
 
 function getBookings() {
     const stmt = db.prepare('SELECT * FROM bookings')
-    return stmt.all()
+    return stmt.all() as DataBooking[];
   }
   
-  export async function fetchBookings() {
+  export async function fetchBookings():Promise<DataBooking[]> {
     try {
-      const bookings = getBookings()
+      const bookings: DataBooking[] = getBookings()
       console.log('Bookings:', bookings)
       return bookings
     } catch (error) {
