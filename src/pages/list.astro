@@ -11,6 +11,7 @@ if (!user) {
 
 let fix_date = ''
 let fix_time = ''
+
 if (Astro.request.method === 'POST') {
   try {
     const data = await Astro.request.formData()
@@ -34,6 +35,7 @@ if (Astro.request.method === 'POST') {
     <form method="post" action="/api/logout">
       <button class="btn btn-danger">Sign out</button>
     </form>
+    ตอนนี้เวลา {fix_date} {fix_time}
     <div class="row mt-4">
       {
         restaurants.map((restaurant: IRestaurant) => (
