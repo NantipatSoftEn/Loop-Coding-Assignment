@@ -2,10 +2,15 @@
 import { convertTo24HourFormat } from '@/pages/api/time'
 import { restaurants, type IRestaurant } from '../mock/data'
 import '@/styles/detailRestaurant.css'
+
 const user = Astro.locals.user
 if (!user) {
   return Astro.redirect('/signin')
 }
+
+const isVisible = true 
+
+
 const { id } = Astro.props
 let data: IRestaurant = {
   id: 0,
