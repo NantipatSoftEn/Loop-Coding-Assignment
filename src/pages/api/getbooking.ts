@@ -6,14 +6,14 @@ function getBookings() {
     return stmt.all() as DataBooking[];
   }
   
-  export async function fetchBookings():Promise<DataBooking[]> {
+  export async function fetchBookings(username: string): Promise<DataBooking[]> {
     try {
-      const bookings: DataBooking[] = getBookings()
-      console.log('Bookings:', bookings)
-      return bookings
+      const bookings: DataBooking[] = getBookings();
+      const filteredBookings = bookings.filter(booking => booking.username === username);
+      console.log('Filtered Bookings:', filteredBookings);
+      return filteredBookings;
     } catch (error) {
-      console.error('Failed to fetch bookings:', error)
-      return []
+      console.error('Failed to fetch bookings:', error);
+      return [];
     }
   }
-  

@@ -3,11 +3,16 @@ import Layout from '@/layouts/templateRestaurants.astro'
 import type { DataBooking } from '@/lib/db'
 import { fetchBookings } from '@/pages/api/getbooking'
 
-const bookings: DataBooking[] = await fetchBookings()
+const user = Astro.locals.user
+if (!user) {
+  return Astro.redirect('/signin')
+}
+const bookings: DataBooking[] = await fetchBookings(user.username)
+
 ---
 
 <Layout>
-  <div class="container mt-5">
+  <div class="container">
     <h1 class="mb-4">Booking Dashboard</h1>
     <table class="table table-striped">
       <thead>

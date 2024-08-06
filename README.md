@@ -19,7 +19,8 @@ Implement a restaurant reservation system where you'll implement user authentica
 - [x] create page login
 - [x] create time & day restaurants logic
 - [x] implement UI
-- [ ] submit form and record
+- [x] submit form and record
+- [] user for test time
 
 ## Time Test Case
 

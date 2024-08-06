@@ -46,11 +46,10 @@ const today = new Date().toISOString().split('T')[0]
 const maxDate = new Date()
 maxDate.setMonth(maxDate.getMonth() + 1) // Set max date to one year from today
 const maxDateString = maxDate.toISOString().split('T')[0]
-console.log("maxDateString",maxDateString)
+console.log('maxDateString', maxDateString)
 const open = convertTo24HourFormat(data.time.open)
-console.log("open",open)
+console.log('open', open)
 const closed = convertTo24HourFormat(data.time.close)
-
 ---
 
 <div class="container">
@@ -71,11 +70,7 @@ const closed = convertTo24HourFormat(data.time.close)
           <!-- <p class="card-text"><small>Last updated 3 mins ago</small></p> -->
         </div>
       </div>
-      <!-- <img
-        src="https://img-service-v3.hungryhub.com/pr:sharp/rs:fill:0:0:0/g:ce/aHR0cHM6Ly9pbWFnZXMuaHVuZ3J5aHViLmNvbS91cGxvYWRzL2Jhbm5lci9kZXNrdG9wX3JldGluYV92ZXJzaW9ucy8zNDMvaG9tZS1wYWdlLWRlc2t0b3BfMTdfYXByLmpwZw==.jpg"
-        alt="Pattern Cozy Bar"
-        class="img-fluid header-image"
-      /> -->
+     
     </div>
   </div>
 
@@ -172,6 +167,39 @@ const closed = convertTo24HourFormat(data.time.close)
     <div class="col-12 alert alert-light">
       <h5>รายละเอียด</h5>
       <div set:html={data.detail} />
+    </div>
+  </div>
+  <div class="row details-section">
+    <div class="col-6 alert alert-light">
+      <h5 class="text-center">Testing Time Tool</h5>
+      <form id="reservation-form" method="POST" action="/api/booking">
+       
+        <div class="mb-3">
+          <label for="date" class="form-label">กำหนดวัน</label>
+          <input
+            type="date"
+            class="form-control"
+            id="date"
+            name="fix_date"
+            min={today}
+            max={maxDateString}
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="time" class="form-label">กำหนดเวลา</label>
+          <input
+            type="time"
+            class="form-control"
+            id="time"
+            name="fix_time"
+            required
+            min={open}
+            max={closed}
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
   </div>
 </div>
