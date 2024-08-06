@@ -9,12 +9,9 @@ export const isRestaurantTimeOpen = (
   restaurantCloseTime: string,
   isDevMode: boolean
 ): boolean => {
-  const formattedRestaurantOpenTime = convertTo24HourFormat(restaurantOpenTime)
-  const formattedRestaurantCloseTime =
-    convertTo24HourFormat(restaurantCloseTime)
+  const openTime = convertTo24HourFormat(restaurantOpenTime)
+  const closeTime = convertTo24HourFormat(restaurantCloseTime)
   const currentTime = !isDevMode ? moment().format('HH:mm') : '17:00'
-  return (
-    formattedRestaurantOpenTime >= currentTime &&
-    currentTime <= formattedRestaurantCloseTime
-  )
+  console.log(`currentTime ${currentTime} open${openTime} close${closeTime}`)
+  return currentTime >= openTime && currentTime <= closeTime
 }

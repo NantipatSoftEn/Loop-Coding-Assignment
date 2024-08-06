@@ -1,6 +1,7 @@
 ---
 import { convertTo24HourFormat } from '@/pages/api/time'
 import { restaurants, type IRestaurant } from '../mock/data'
+import { getRestaurantStatus } from '@/pages/api/calculate'
 import '@/styles/detailRestaurant.css'
 
 const user = Astro.locals.user
@@ -38,9 +39,10 @@ const status = getRestaurantStatus(
   data.day,
   data.time.open,
   data.time.close,
-  true
+  false
 )
 
+console.log("status",status)
 
 const today = new Date().toISOString().split('T')[0]
 const maxDate = new Date()

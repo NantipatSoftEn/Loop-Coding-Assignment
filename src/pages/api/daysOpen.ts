@@ -28,6 +28,7 @@ const isWithinRange = (
 
 export const isOpenOnDay = (openDays: string, isDevMode: boolean): boolean => {
   if (openDays === 'Open everyday') {
+    console.log("Open everyday")
     return true
   }
 
