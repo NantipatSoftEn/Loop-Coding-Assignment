@@ -6,8 +6,10 @@ import moment from 'moment'
 import { getRestaurantStatus } from '@/pages/api/calculate'
 interface Props {
   restaurant: IRestaurant
+  fix_date?:string
+  fix_time?:string
 }
-const { restaurant } = Astro.props
+const { restaurant,fix_date = '',fix_time='' } = Astro.props
 const currentDay = moment().format('dddd')
 ---
 
@@ -27,7 +29,9 @@ const currentDay = moment().format('dddd')
                 restaurant.day,
                 restaurant.time.open,
                 restaurant.time.close,
-                false
+                fix_date,
+                fix_time,
+                true,
               )
             }
           </h5>

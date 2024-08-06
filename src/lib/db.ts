@@ -26,6 +26,13 @@ db.exec(`CREATE TABLE IF NOT EXISTS bookings (
     )
   `)
 
+db.exec(`CREATE TABLE IF NOT EXISTS fake_time (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  date TEXT NOT NULL,
+  time TEXT NOT NULL
+  )
+`)
+
 export interface DatabaseUser {
   id: string
   username: string
@@ -46,4 +53,9 @@ export interface DataBooking {
   username: string
   restaurant: string
   status?: Status
+}
+
+export interface FakeTime{
+  date: string
+  time: string
 }

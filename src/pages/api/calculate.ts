@@ -1,15 +1,17 @@
 import { isOpenOnDay } from './daysOpen'
 import { isRestaurantTimeOpen } from './time'
 
-export const getRestaurantStatus = (
+export const getRestaurantStatus = async (
   openDays: string,
   restaurantOpenTime: string,
   restaurantCloseTime: string,
-  isDevMode = false
-): string => {
+  fixDate:string,
+  fixTime:string,
+  isDevMode = false,
+): Promise<string> => {
   if (
-    isOpenOnDay(openDays, isDevMode) &&
-    isRestaurantTimeOpen(restaurantOpenTime, restaurantCloseTime, isDevMode)
+    await isOpenOnDay(openDays, isDevMode,fixDate) &&
+    await isRestaurantTimeOpen(restaurantOpenTime, restaurantCloseTime, fixTime,isDevMode)
   ) {
     return 'Open'
   }

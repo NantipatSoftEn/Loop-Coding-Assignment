@@ -1,5 +1,5 @@
 import moment from 'moment'
-
+import { getCurrentDayFake } from './addCurrentFake'
 type Status = 'Open' | 'Closed'
 
 const daysMap: { [key: string]: number } = {
@@ -26,7 +26,7 @@ const isWithinRange = (
   }
 }
 
-export const isOpenOnDay = (openDays: string, isDevMode: boolean): boolean => {
+export const isOpenOnDay = async (openDays: string, isDevMode: boolean,fixDate:string): Promise<boolean> => {
   if (openDays === 'Open everyday') {
     console.log("Open everyday")
     return true
@@ -35,8 +35,9 @@ export const isOpenOnDay = (openDays: string, isDevMode: boolean): boolean => {
   const [startDay, endDay] = openDays.replace('Open ', '').split(' - ')
   const startDayIndex = getDayIndex(startDay)
   const endDayIndex = getDayIndex(endDay)
+  
   const currentDayIndex = getDayIndex(
-    !isDevMode ? moment().format('dddd') : 'Sunday'
+    !isDevMode ? moment().format('dddd') : fixDate
   )
 
   return isWithinRange(currentDayIndex, startDayIndex, endDayIndex)
