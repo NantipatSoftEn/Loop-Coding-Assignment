@@ -1,5 +1,5 @@
 import sqlite from 'better-sqlite3'
-
+import { hash } from '@node-rs/argon2'
 export const db = sqlite(':memory:')
 
 db.exec(`CREATE TABLE IF NOT EXISTS user (
@@ -7,6 +7,9 @@ db.exec(`CREATE TABLE IF NOT EXISTS user (
     username TEXT NOT NULL UNIQUE,
     password_hash TEXT NOT NULL
 )`)
+
+
+
 
 db.exec(`CREATE TABLE IF NOT EXISTS session (
     id TEXT NOT NULL PRIMARY KEY,
@@ -44,6 +47,27 @@ export enum Status {
   CheckIn,
   CheckOut,
 }
+
+
+function addUser(id: string, username: string, passwordHash: string) {
+  const stmt = db.prepare(`INSERT INTO user (id, username, password_hash) VALUES (?, ?, ?)`);
+  stmt.run(id, username, passwordHash);
+  console.log('User added successfully');
+}
+
+// Example usage
+const userId = '1';
+const userName = 'admin12345';
+const passwordHash = await hash("admin12345", {
+  // recommended minimum parameters
+  memoryCost: 19456,
+  timeCost: 2,
+  outputLen: 32,
+  parallelism: 1,
+})
+
+addUser(userId, userName, passwordHash);
+export const ADMIN = "admin12345"
 
 export interface DataBooking {
   id: string

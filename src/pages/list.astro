@@ -2,8 +2,11 @@
 import Card from '@/components/Card.astro'
 import Layout from '@/layouts/templateRestaurants.astro'
 import { restaurants, type IRestaurant } from '../mock/data'
+import { ADMIN } from '@/lib/db'
 
 const user = Astro.locals.user
+const isAdmin = user?.username === ADMIN
+
 console.log('user', user)
 if (!user) {
   return Astro.redirect('/signin')
@@ -35,7 +38,8 @@ if (Astro.request.method === 'POST') {
     <form method="post" action="/api/logout">
       <button class="btn btn-danger">Sign out</button>
     </form>
-    ตอนนี้เวลา {fix_date} {fix_time}
+     {isAdmin && <p>ตอนนี้เวลา {fix_date}</p>}  
+    {fix_time}
     <div class="row mt-4">
       {
         restaurants.map((restaurant: IRestaurant) => (
@@ -47,7 +51,7 @@ if (Astro.request.method === 'POST') {
         ))
       }
     </div>
-    <div class="row details-section">
+    {isAdmin &&  <div class="row details-section">
       <div class="col-6 alert alert-light">
         <h5 class="text-center">Testing Time Tool</h5>
         <form id="reservation-form " method="POST">
@@ -80,5 +84,24 @@ if (Astro.request.method === 'POST') {
         </form>
       </div>
     </div>
-  </div>
+  </div>}
+    
 </Layout>
+<script>
+  const errorMessageElement = document.getElementById('form-error')!
+
+  document.forms[0].addEventListener('submit', async e => {
+    e.preventDefault()
+    errorMessageElement.innerText = ''
+    const formElement = e.target as HTMLFormElement
+    const response = await fetch(formElement.action, {
+      method: formElement.method,
+      body: new FormData(formElement),
+    })
+    if (response.ok) {
+      window.location.href = '/signin'
+    } else {
+      errorMessageElement.innerText = (await response.json()).error
+    }
+  })
+</script>

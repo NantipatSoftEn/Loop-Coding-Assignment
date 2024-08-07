@@ -20,7 +20,7 @@ Implement a restaurant reservation system where you'll implement user authentica
 - [x] create time & day restaurants logic
 - [x] implement UI
 - [x] submit form and record
-- [] user for test time
+- [x] user for test time
 
 ## Time Test Case
 
