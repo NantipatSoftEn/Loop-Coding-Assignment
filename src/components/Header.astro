@@ -1,6 +1,10 @@
 ---
 import HeaderLink from './HeaderLink.astro'
 import { SITE_TITLE } from '../consts'
+import { ADMIN } from '@/lib/db'
+
+const user = Astro.locals.user
+const isAdmin = user?.username === ADMIN
 ---
 
 <header>
@@ -8,11 +12,15 @@ import { SITE_TITLE } from '../consts'
     <h2><a href="/">{SITE_TITLE}</a></h2>
 
     <div class="internal-links">
-      <HeaderLink href="/">Home</HeaderLink>
-      <!-- <HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink> -->
-      <HeaderLink href="/list">list</HeaderLink>
-      <HeaderLink href="/dashboard">dashboard</HeaderLink>
+      {
+        isAdmin && (
+          <div>
+            <HeaderLink href="/">Home</HeaderLink>
+            <HeaderLink href="/list">list</HeaderLink>
+            <HeaderLink href="/dashboard">dashboard</HeaderLink>
+          </div>
+        )
+      }
     </div>
 
     <div class="social-links">

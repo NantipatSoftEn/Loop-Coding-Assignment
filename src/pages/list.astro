@@ -88,20 +88,13 @@ if (Astro.request.method === 'POST') {
     
 </Layout>
 <script>
-  const errorMessageElement = document.getElementById('form-error')!
-
-  document.forms[0].addEventListener('submit', async e => {
-    e.preventDefault()
-    errorMessageElement.innerText = ''
-    const formElement = e.target as HTMLFormElement
-    const response = await fetch(formElement.action, {
-      method: formElement.method,
-      body: new FormData(formElement),
-    })
-    if (response.ok) {
-      window.location.href = '/signin'
-    } else {
-      errorMessageElement.innerText = (await response.json()).error
-    }
-  })
+	document.forms[0].addEventListener("submit", async (e) => {
+		e.preventDefault();
+		const formElement = e.target as HTMLFormElement;
+		await fetch(formElement.action, {
+			method: formElement.method,
+			body: new FormData(formElement)
+		});
+		window.location.href = "/signin";
+	});
 </script>

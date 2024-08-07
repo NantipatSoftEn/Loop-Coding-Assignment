@@ -32,14 +32,6 @@ if (id == 1) {
   data = restaurants[2]
 }
 
-const status: string = await getRestaurantStatus(
-  data.day,
-  data.time.open,
-  data.time.close,
-  false
-)
-
-console.log('status', status)
 
 const today = new Date().toISOString().split('T')[0]
 const maxDate = new Date()
