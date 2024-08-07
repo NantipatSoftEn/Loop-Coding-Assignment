@@ -183,7 +183,7 @@ createCollectionToGlobResultMap({
 });
 
 let lookupMap = {};
-lookupMap = {"blog":{"type":"content","entries":{"first-post":"/src/content/blog/first-post.md","markdown-style-guide":"/src/content/blog/markdown-style-guide.md","second-post":"/src/content/blog/second-post.md","using-mdx":"/src/content/blog/using-mdx.mdx","third-post":"/src/content/blog/third-post.md"}}};
+lookupMap = {"blog":{"type":"content","entries":{"markdown-style-guide":"/src/content/blog/markdown-style-guide.md","second-post":"/src/content/blog/second-post.md","first-post":"/src/content/blog/first-post.md","third-post":"/src/content/blog/third-post.md","using-mdx":"/src/content/blog/using-mdx.mdx"}}};
 
 function createGlobLookup(glob) {
 	return async (collection, lookupId) => {
